@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Topics — Faraday Notes</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23fafaf7' rx='4'/><text x='1' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%231a1a18'>F</text><text x='15' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%23c0392b'>N</text></svg>">
+<link rel="stylesheet" href="style.css">
+<style>
+  .topics-page { max-width: var(--wide); margin: 0 auto; padding: 4rem 2.5rem; }
+  .topic-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+  .topic-card { border: 1px solid var(--rule); padding: 1.5rem; border-radius: 3px; }
+  .topic-card p { font-size: 0.88rem; color: var(--ink-light); margin-top: 0.5rem; line-height: 1.6; }
+  @media (max-width: 800px) { .topic-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">F<span>N</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Posts</a></li>
+    <li><a href="topics.html" class="active">Topics</a></li>
+    <li><a href="about.html">About & Contact</a></li>
+  </ul>
+</nav>
+
+<div class="topics-page">
+  <div class="section-label">All Topics</div>
+  <div class="topic-grid">
+    <div class="topic-card">
+      <div class="post-tag">Lithium-Ion Batteries</div>
+      <p>NMC, LFP, silicon anodes, fast charging physics, and the material science behind next-generation Li-ion cells.</p>
+    </div>
+    <div class="topic-card">
+      <div class="post-tag">Sodium-Ion Batteries</div>
+      <p>NVP cathodes, hard carbon anodes, electrolyte formulation, full-cell optimization and commercialization challenges.</p>
+    </div>
+    <div class="topic-card">
+      <div class="post-tag">Cell Degradation</div>
+      <p>Capacity fade analysis, dQ/dV diagnostics, knee-point detection, post-mortem characterization, and lifetime prediction.</p>
+    </div>
+    <div class="topic-card">
+      <div class="post-tag">Electrolytes</div>
+      <p>Solvent blends, salt selection, additives, SEI chemistry, high-temperature and low-temperature performance tradeoffs.</p>
+    </div>
+    <div class="topic-card">
+      <div class="post-tag">Solid-State Batteries</div>
+      <p>Oxide, sulfide, and polymer electrolytes. Interface challenges, stack pressure requirements, and manufacturing reality.</p>
+    </div>
+    <div class="topic-card">
+      <div class="post-tag">Open Data & Methods</div>
+      <p>Public battery datasets, analysis methods, Python tools, and reproducible electrochemical data science.</p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>Faraday Notes — Battery science & energy storage technology</span>
+  <span>faradaynotes.com</span>
+</footer>
+</body>
+</html>

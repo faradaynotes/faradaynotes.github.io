@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faraday Notes — Battery Science & Energy Storage</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23fafaf7' rx='4'/><text x='1' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%231a1a18'>F</text><text x='15' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%23c0392b'>N</text></svg>">
+<link rel="stylesheet" href="style.css">
+<style>
+  .masthead {
+    border-bottom: 3px double var(--rule);
+    padding: 3.5rem 2.5rem 2.5rem;
+    text-align: center;
+    max-width: var(--wide);
+    margin: 0 auto;
+  }
+  .masthead-title {
+    font-family: var(--display);
+    font-size: 3rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+  .masthead-title span { color: var(--accent); }
+  .masthead-tagline {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--ink-faint);
+    margin-bottom: 1.2rem;
+  }
+  .masthead-topics {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+  .topic-pill {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    border: 1px solid var(--rule);
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+  }
+  .featured-section {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 2.5rem 2.5rem 0;
+  }
+  .featured-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule);
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+  .featured-card:hover .featured-title { color: var(--accent); }
+  .featured-tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.8rem;
+  }
+  .featured-title {
+    font-family: var(--display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+    transition: color 0.15s;
+  }
+  .featured-excerpt {
+    font-size: 0.95rem;
+    color: var(--ink-light);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .featured-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.05em;
+    display: flex;
+    gap: 1.2rem;
+  }
+  .featured-chart {
+    background: var(--paper-warm);
+    border: 1px solid var(--rule);
+    padding: 1.5rem;
+    border-radius: 3px;
+  }
+  .chart-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--ink-faint);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+  }
+  .posts-section {
+    max-width: var(--wide);
+    margin: 0 auto;
+    padding: 2rem 2.5rem 4rem;
+  }
+  .post-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .post-card {
+    border-top: 2px solid var(--rule);
+    padding-top: 1.2rem;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+  .post-card:hover { border-color: var(--accent); }
+  .post-title {
+    font-family: var(--display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+  .post-excerpt {
+    font-size: 0.85rem;
+    color: var(--ink-light);
+    line-height: 1.6;
+    margin-bottom: 0.8rem;
+  }
+  @media (max-width: 800px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .post-grid { grid-template-columns: 1fr; }
+    .masthead-title { font-size: 2rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">F<span>N</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Posts</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="about.html">About & Contact</a></li>
+  </ul>
+</nav>
+
+<div class="masthead">
+  <h1 class="masthead-title">Faraday <span>Notes</span></h1>
+  <p class="masthead-tagline">Independent analysis of battery technology, electrochemistry, and the future of energy storage</p>
+  <div class="masthead-topics">
+    <span class="topic-pill">Sodium-Ion</span>
+    <span class="topic-pill">Lithium-Ion</span>
+    <span class="topic-pill">Degradation</span>
+    <span class="topic-pill">Electrolytes</span>
+    <span class="topic-pill">Cell Design</span>
+    <span class="topic-pill">Open Data</span>
+    <span class="topic-pill">Solid-State</span>
+    <span class="topic-pill">EV Technology</span>
+  </div>
+</div>
+
+<div class="featured-section">
+  <div class="section-label">Latest Analysis</div>
+  <a class="featured-card" href="posts/donut-lab.html">
+    <div>
+      <div class="featured-tag">Solid-State · Industry Claims · Critical Analysis</div>
+      <h2 class="featured-title">Donut Lab's Solid-State Battery Claims: What the Electrochemistry Actually Says</h2>
+      <p class="featured-excerpt">A Finnish startup claimed at CES 2026 to have built the world's first production solid-state battery — 400 Wh/kg, 5-minute charging, 100,000-cycle life. Five independent tests later, the two claims that actually matter remain completely unverified. Here's what a battery scientist thinks.</p>
+      <div class="featured-meta">
+        <span>March 2026</span>
+        <span>Coming soon</span>
+        <span>Solid-State · SSB · Industry Analysis</span>
+      </div>
+    </div>
+    <div class="featured-chart">
+      <div class="chart-label">Donut Lab claims vs. state of the art</div>
+      <svg viewBox="0 0 360 200" width="100%" style="display:block;">
+        <line x1="36" y1="10" x2="36" y2="170" stroke="#ddddd5" stroke-width="1"/>
+        <line x1="36" y1="170" x2="350" y2="170" stroke="#ddddd5" stroke-width="1"/>
+        <rect x="50" y="95" width="35" height="75" fill="#2980b9" opacity="0.8"/>
+        <rect x="95" y="70" width="35" height="100" fill="#c0392b" opacity="0.8"/>
+        <rect x="170" y="120" width="35" height="50" fill="#2980b9" opacity="0.8"/>
+        <rect x="215" y="10" width="35" height="160" fill="#c0392b" opacity="0.8"/>
+        <rect x="290" y="103" width="35" height="67" fill="#2980b9" opacity="0.8"/>
+        <rect x="335" y="153" width="35" height="17" fill="#c0392b" opacity="0.8"/>
+        <text x="67" y="185" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Li-ion</text>
+        <text x="112" y="185" font-size="8" fill="#c0392b" text-anchor="middle" font-family="monospace">Donut</text>
+        <text x="187" y="185" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Li-ion</text>
+        <text x="232" y="185" font-size="8" fill="#c0392b" text-anchor="middle" font-family="monospace">Donut</text>
+        <text x="307" y="185" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Li-ion</text>
+        <text x="352" y="185" font-size="8" fill="#c0392b" text-anchor="middle" font-family="monospace">Donut</text>
+        <text x="89" y="197" font-size="8" fill="#4a4a44" text-anchor="middle" font-family="monospace">Energy density</text>
+        <text x="209" y="197" font-size="8" fill="#4a4a44" text-anchor="middle" font-family="monospace">Cycle life</text>
+        <text x="329" y="197" font-size="8" fill="#4a4a44" text-anchor="middle" font-family="monospace">Charge time</text>
+        <rect x="50" y="14" width="10" height="8" fill="#2980b9" opacity="0.8"/>
+        <text x="64" y="21" font-size="8" fill="#8a8a82" font-family="monospace">Best Li-ion today</text>
+        <rect x="160" y="14" width="10" height="8" fill="#c0392b" opacity="0.8"/>
+        <text x="174" y="21" font-size="8" fill="#c0392b" font-family="monospace">Donut Lab claim</text>
+      </svg>
+    </div>
+  </a>
+</div>
+
+<footer>
+  <span>Faraday Notes — Battery science & energy storage technology</span>
+  <span>faradaynotes.com</span>
+</footer>
+</body>
+</html>

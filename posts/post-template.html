@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>POST TITLE — Faraday Notes</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23fafaf7' rx='4'/><text x='1' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%231a1a18'>F</text><text x='15' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%23c0392b'>N</text></svg>">
+<link rel="stylesheet" href="../style.css">
+<style>
+  .post-header { max-width: var(--col); margin: 0 auto; padding: 3.5rem 2rem 2.5rem; border-bottom: 1px solid var(--rule); }
+  .post-category { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.8rem; }
+  .post-h1 { font-family: var(--display); font-size: 2.4rem; font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
+  .post-abstract { font-size: 1.05rem; font-style: italic; color: var(--ink-light); line-height: 1.65; margin-bottom: 1.5rem; }
+  .post-byline { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: 0.04em; border-top: 1px solid var(--rule); padding-top: 1rem; display: flex; gap: 2rem; flex-wrap: wrap; }
+  .post-body { max-width: var(--col); margin: 0 auto; padding: 2.5rem 2rem 4rem; }
+  .post-body h2 { font-family: var(--display); font-size: 1.4rem; font-weight: 600; margin: 2.8rem 0 0.9rem; border-left: 3px solid var(--accent); padding-left: 0.8rem; }
+  .post-body h3 { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin: 2rem 0 0.6rem; }
+  .post-body p { margin-bottom: 1.3rem; }
+  .post-body p + p { text-indent: 1.5em; }
+  .aside { background: var(--highlight); border-left: 3px solid #f0c040; padding: 0.8rem 1rem; margin: 1.5rem 0; font-size: 0.88rem; color: var(--ink-light); font-style: italic; }
+  .equation { font-family: var(--mono); font-size: 0.9rem; background: var(--paper-warm); border: 1px solid var(--rule); padding: 1rem 1.5rem; margin: 1.5rem 0; text-align: center; }
+  .fig-inline { background: var(--paper-warm); border: 1px solid var(--rule); padding: 1.5rem; margin: 2rem 0; border-radius: 3px; }
+  .fig-caption { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); margin-top: 0.8rem; line-height: 1.5; }
+  .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 1.5rem 0; font-family: var(--mono); }
+  .data-table th { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); border-bottom: 2px solid var(--rule); padding: 0.5rem 0.8rem; text-align: left; }
+  .data-table td { padding: 0.5rem 0.8rem; border-bottom: 1px solid var(--rule); color: var(--ink-light); }
+  .data-table tr:hover td { background: var(--paper-warm); }
+  .post-tags { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  hr.divider { border: none; border-top: 1px solid var(--rule); margin: 2.5rem 0; }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="../index.html">F<span>N</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html">Posts</a></li>
+    <li><a href="../topics.html">Topics</a></li>
+    <li><a href="../about.html">About & Contact</a></li>
+  </ul>
+</nav>
+
+<div class="post-header">
+  <a class="back-btn" href="../index.html">← Back to all posts</a>
+  <div class="post-category">TOPIC · SUBTOPIC</div>
+  <h1 class="post-h1">Your Post Title Goes Here</h1>
+  <p class="post-abstract">One or two sentence abstract describing what this post covers and why it matters.</p>
+  <div class="post-byline">
+    <span>Month Year</span>
+    <span>X min read</span>
+    <span>Tag1 · Tag2 · Tag3</span>
+  </div>
+</div>
+
+<div class="post-body">
+
+  <h2>Section Title</h2>
+  <p>Your content goes here. Write in plain paragraphs.</p>
+  <p>Second paragraph — note the auto indent.</p>
+
+  <!-- ASIDE / NOTE BOX -->
+  <div class="aside">
+    A note, caveat, or highlight goes here.
+  </div>
+
+  <!-- EQUATION -->
+  <div class="equation">
+    Your equation here — e.g. Q = C × V
+  </div>
+
+  <!-- INLINE FIGURE -->
+  <div class="fig-inline">
+    <!-- Put SVG or image here -->
+    <p class="fig-caption"><strong>Figure 1.</strong> Caption goes here.</p>
+  </div>
+
+  <!-- DATA TABLE -->
+  <table class="data-table">
+    <thead>
+      <tr><th>Column 1</th><th>Column 2</th><th>Column 3</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Data</td><td>Data</td><td>Data</td></tr>
+    </tbody>
+  </table>
+
+  <hr class="divider">
+  <h3>Data & Code</h3>
+  <p>Note about data sources and code availability.</p>
+
+  <div class="post-tags">
+    <span class="tag">Tag1</span>
+    <span class="tag">Tag2</span>
+    <span class="tag">Tag3</span>
+  </div>
+
+</div>
+
+<footer>
+  <span>Faraday Notes — Battery science & energy storage technology</span>
+  <span>faradaynotes.com</span>
+</footer>
+</body>
+</html>
