@@ -8,9 +8,13 @@
 <link rel="stylesheet" href="style.css">
 <style>
   .topics-page { max-width: var(--wide); margin: 0 auto; padding: 4rem 2.5rem; }
+  .topics-intro { max-width: 760px; font-size: 0.98rem; color: var(--ink-light); line-height: 1.75; margin-bottom: 1.5rem; }
   .topic-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-  .topic-card { border: 1px solid var(--rule); padding: 1.5rem; border-radius: 3px; }
-  .topic-card p { font-size: 0.88rem; color: var(--ink-light); margin-top: 0.5rem; line-height: 1.6; }
+  .topic-card { border: 1px solid var(--rule); padding: 1.5rem; border-radius: 3px; background: #fff; }
+  .topic-card p { font-size: 0.88rem; color: var(--ink-light); margin-top: 0.75rem; line-height: 1.6; }
+  .topic-figure { background: var(--paper-warm); border: 1px solid var(--rule); padding: 0.9rem; border-radius: 3px; }
+  .topic-figure svg { width: 100%; height: auto; display: block; }
+  .topic-caption { font-family: var(--mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-top: 0.6rem; }
   @media (max-width: 800px) { .topic-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
@@ -20,36 +24,111 @@
   <ul class="nav-links">
     <li><a href="index.html">Posts</a></li>
     <li><a href="topics.html" class="active">Topics</a></li>
-    <li><a href="about.html">About & Contact</a></li>
-      <li><a href="contact.html">Contact</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
   </ul>
 </nav>
 
 <div class="topics-page">
   <div class="section-label">All Topics</div>
+  <p class="topics-intro">Faraday Notes is organized as a growing set of technical themes. As new posts are published, this page will evolve into a live map of the site — linking chemistry, diagnostics, materials, and methods through short visual schematics rather than text alone.</p>
   <div class="topic-grid">
     <div class="topic-card">
       <div class="post-tag">Lithium-Ion Batteries</div>
+      <div class="topic-figure">
+        <svg viewBox="0 0 220 120" aria-hidden="true">
+          <rect x="18" y="18" width="184" height="84" rx="2" fill="#fafaf7" stroke="#ddddd5"/>
+          <rect x="28" y="28" width="24" height="64" fill="#c0392b" opacity="0.9"/>
+          <rect x="168" y="28" width="24" height="64" fill="#c0392b" opacity="0.9"/>
+          <rect x="80" y="28" width="60" height="64" fill="#f4f3ee" stroke="#ddddd5"/>
+          <line x1="52" y1="60" x2="80" y2="60" stroke="#8a8a82" stroke-dasharray="3 3"/>
+          <line x1="140" y1="60" x2="168" y2="60" stroke="#8a8a82" stroke-dasharray="3 3"/>
+          <text x="40" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Anode</text>
+          <text x="110" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Electrolyte</text>
+          <text x="180" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Cathode</text>
+          <path d="M64 46 C76 38, 144 38, 156 46" stroke="#1a1a18" fill="none"/>
+          <polygon points="154,43 160,46 154,49" fill="#1a1a18"/>
+        </svg>
+        <div class="topic-caption">Cell stack · transport · rate capability</div>
+      </div>
       <p>NMC, LFP, silicon anodes, fast charging physics, and the material science behind next-generation Li-ion cells.</p>
     </div>
     <div class="topic-card">
       <div class="post-tag">Sodium-Ion Batteries</div>
+      <div class="topic-figure">
+        <svg viewBox="0 0 220 120" aria-hidden="true">
+          <rect x="20" y="24" width="180" height="72" rx="2" fill="#fafaf7" stroke="#ddddd5"/>
+          <circle cx="56" cy="60" r="10" fill="#c0392b" opacity="0.9"/>
+          <circle cx="86" cy="60" r="10" fill="#c0392b" opacity="0.7"/>
+          <circle cx="116" cy="60" r="10" fill="#c0392b" opacity="0.5"/>
+          <circle cx="146" cy="60" r="10" fill="#c0392b" opacity="0.35"/>
+          <circle cx="176" cy="60" r="10" fill="#c0392b" opacity="0.2"/>
+          <text x="110" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Na-ion diffusion pathway</text>
+        </svg>
+        <div class="topic-caption">Hard carbon · NVP · ion insertion</div>
+      </div>
       <p>NVP cathodes, hard carbon anodes, electrolyte formulation, full-cell optimization and commercialization challenges.</p>
     </div>
     <div class="topic-card">
       <div class="post-tag">Cell Degradation</div>
+      <div class="topic-figure">
+        <svg viewBox="0 0 220 120" aria-hidden="true">
+          <line x1="24" y1="96" x2="196" y2="96" stroke="#ddddd5"/>
+          <line x1="24" y1="24" x2="24" y2="96" stroke="#ddddd5"/>
+          <path d="M30 34 C64 36, 92 40, 118 52 S166 76, 190 90" fill="none" stroke="#c0392b" stroke-width="2"/>
+          <line x1="150" y1="24" x2="150" y2="96" stroke="#8a8a82" stroke-dasharray="4 4"/>
+          <text x="152" y="20" font-size="8" fill="#8a8a82" font-family="monospace">Knee</text>
+          <text x="110" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Capacity fade trajectory</text>
+        </svg>
+        <div class="topic-caption">Fade · dQ/dV · failure signatures</div>
+      </div>
       <p>Capacity fade analysis, dQ/dV diagnostics, knee-point detection, post-mortem characterization, and lifetime prediction.</p>
     </div>
     <div class="topic-card">
       <div class="post-tag">Electrolytes</div>
+      <div class="topic-figure">
+        <svg viewBox="0 0 220 120" aria-hidden="true">
+          <rect x="34" y="26" width="152" height="68" rx="34" fill="#fafaf7" stroke="#ddddd5"/>
+          <circle cx="76" cy="60" r="12" fill="#c0392b" opacity="0.85"/>
+          <circle cx="110" cy="60" r="12" fill="#8a8a82" opacity="0.55"/>
+          <circle cx="144" cy="60" r="12" fill="#c0392b" opacity="0.35"/>
+          <text x="110" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Salt + solvent + additive balance</text>
+        </svg>
+        <div class="topic-caption">SEI chemistry · transport · stability</div>
+      </div>
       <p>Solvent blends, salt selection, additives, SEI chemistry, high-temperature and low-temperature performance tradeoffs.</p>
     </div>
     <div class="topic-card">
       <div class="post-tag">Solid-State Batteries</div>
+      <div class="topic-figure">
+        <svg viewBox="0 0 220 120" aria-hidden="true">
+          <rect x="24" y="28" width="48" height="60" fill="#c0392b" opacity="0.85"/>
+          <rect x="86" y="28" width="48" height="60" fill="#f4f3ee" stroke="#ddddd5"/>
+          <rect x="148" y="28" width="48" height="60" fill="#c0392b" opacity="0.5"/>
+          <line x1="72" y1="24" x2="72" y2="92" stroke="#8a8a82" stroke-dasharray="3 3"/>
+          <line x1="148" y1="24" x2="148" y2="92" stroke="#8a8a82" stroke-dasharray="3 3"/>
+          <text x="110" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Interface-limited transport</text>
+        </svg>
+        <div class="topic-caption">Oxide · sulfide · polymer interfaces</div>
+      </div>
       <p>Oxide, sulfide, and polymer electrolytes. Interface challenges, stack pressure requirements, and manufacturing reality.</p>
     </div>
     <div class="topic-card">
       <div class="post-tag">Open Data & Methods</div>
+      <div class="topic-figure">
+        <svg viewBox="0 0 220 120" aria-hidden="true">
+          <rect x="28" y="24" width="164" height="72" rx="2" fill="#fafaf7" stroke="#ddddd5"/>
+          <line x1="52" y1="36" x2="52" y2="84" stroke="#ddddd5"/>
+          <line x1="88" y1="36" x2="88" y2="84" stroke="#ddddd5"/>
+          <line x1="124" y1="36" x2="124" y2="84" stroke="#ddddd5"/>
+          <line x1="160" y1="36" x2="160" y2="84" stroke="#ddddd5"/>
+          <line x1="40" y1="52" x2="180" y2="52" stroke="#ddddd5"/>
+          <line x1="40" y1="68" x2="180" y2="68" stroke="#ddddd5"/>
+          <circle cx="106" cy="60" r="7" fill="#c0392b"/>
+          <text x="110" y="108" font-size="8" fill="#8a8a82" text-anchor="middle" font-family="monospace">Structured datasets + reproducible analysis</text>
+        </svg>
+        <div class="topic-caption">Data pipelines · code · publication figures</div>
+      </div>
       <p>Public battery datasets, analysis methods, Python tools, and reproducible electrochemical data science.</p>
     </div>
   </div>
