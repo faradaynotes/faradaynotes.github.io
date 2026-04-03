@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Faraday Notes</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23fafaf7' rx='4'/><text x='1' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%231a1a18'>F</text><text x='15' y='25' font-family='Georgia,serif' font-size='23' font-weight='700' fill='%23c0392b'>N</text></svg>">
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-page { max-width: var(--col); margin: 0 auto; padding: 4rem 2rem 5rem; }
+  .contact-page h1 { font-family: var(--display); font-size: 2rem; font-weight: 600; margin-bottom: 0.4rem; }
+  .contact-kicker { font-family: var(--mono); font-size: 11px; letter-spacing: 0.12em; color: var(--accent); text-transform: uppercase; margin-bottom: 1.5rem; }
+  .contact-intro { font-size: 1rem; color: var(--ink-light); line-height: 1.7; margin-bottom: 1.6rem; }
+  .contact-note { background: var(--paper-warm); border: 1px solid var(--rule); padding: 1rem 1.1rem; margin-bottom: 1.8rem; font-size: 0.9rem; color: var(--ink-light); }
+  .contact-form { display: grid; gap: 1rem; }
+  .form-row { display: grid; gap: 0.45rem; }
+  .form-row label { font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .form-row input, .form-row textarea {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--rule);
+    color: var(--ink);
+    font-family: var(--serif);
+    font-size: 1rem;
+    padding: 0.85rem 0.95rem;
+    border-radius: 2px;
+  }
+  .form-row input:focus, .form-row textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(192,57,43,0.08);
+  }
+  .form-row textarea { min-height: 220px; resize: vertical; }
+  .contact-actions { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.3rem; }
+  .submit-btn {
+    appearance: none;
+    border: 1px solid var(--ink);
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .submit-btn:hover { background: var(--accent); border-color: var(--accent); }
+  .contact-direct { font-size: 0.9rem; color: var(--ink-faint); }
+  .contact-direct a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); }
+  .contact-direct a:hover { color: var(--accent); border-color: var(--accent); }
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-brand" href="index.html">F<span>N</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Posts</a></li>
+    <li><a href="topics.html">Topics</a></li>
+    <li><a href="about.html">About & Contact</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="contact-page">
+  <h1>Contact</h1>
+  <div class="contact-kicker">Editorial inquiries · collaborations · feedback</div>
+  <p class="contact-intro">Use the form below for article feedback, collaboration ideas, data inquiries, or technical questions related to Faraday Notes.</p>
+
+  <div class="contact-note">
+    Messages sent through this form are delivered to <strong>faradaynotes@gmail.com</strong>. For direct email, you can also use the address shown below.
+  </div>
+
+  <div id="success-message" class="contact-note" style="display:none; border-color: rgba(46, 125, 50, 0.18); background: #f6fbf6; color: #2f5d34;">
+    Message sent successfully. Thank you for reaching out.
+  </div>
+
+<form class="contact-form" action="https://formspree.io/f/mnjobyjo" method="POST">
+    <div class="form-row">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" placeholder="Your name" required>
+    </div>
+
+    <div class="form-row">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" placeholder="you@example.com" required>
+    </div>
+
+    <div class="form-row">
+      <label for="subject">Subject</label>
+      <input id="subject" name="subject" type="text" placeholder="What is this about?" required>
+    </div>
+
+    <div class="form-row">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="New Faraday Notes contact form submission">
+    <input type="hidden" name="_next" value="https://faradaynotes.com/contact.html?submitted=true">
+
+    <div class="contact-actions">
+      <button class="submit-btn" type="submit">Send message</button>
+      <div class="contact-direct">Or email <a href="mailto:faradaynotes@gmail.com">faradaynotes@gmail.com</a></div>
+    </div>
+  </form>
+</div>
+
+<footer>
+  <span>Faraday Notes — Battery science & energy storage technology</span>
+  <span>faradaynotes.com</span>
+</footer>
+<script>
+  if (window.location.search.includes("submitted=true")) {
+    var success = document.getElementById("success-message");
+    if (success) success.style.display = "block";
+  }
+</script>
+</body>
+</html>
