@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,300;1,8..60,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap');
 
 :root {
   --ink: #1a1a18;
@@ -10,7 +10,7 @@
   --rule: #ddddd5;
   --highlight: #fff9c4;
   --mono: 'DM Mono', monospace;
-  --serif: 'Source Serif 4', Georgia, serif;
+  --serif: 'Inter', system-ui, sans-serif;
   --display: 'Lora', Georgia, serif;
   --col: 680px;
   --wide: 980px;
