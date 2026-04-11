@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@400;500&family=Inter:wght@300;400;600&display=swap');
+/* Google Fonts loaded via <link> tags in HTML head for better performance */
 
 :root {
   --ink: #1a1a18;
@@ -148,4 +148,32 @@ footer {
 @media (max-width: 800px) {
   nav { padding: 0 1.2rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
+
+/* ── Keyboard accessibility: focus-visible ── */
+:focus { outline: none; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.nav-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 2px;
+}
+
+.form-row input:focus-visible,
+.form-row textarea:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
+}
+
+.submit-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgba(192,57,43,0.15);
 }
