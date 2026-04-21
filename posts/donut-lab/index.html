@@ -22,8 +22,8 @@
 <meta property="og:title" content="What's Actually Inside Donut Lab's Solid-State Battery?">
 <meta property="og:description" content="Donut Lab claims a battery chemistry without lithium, nickel, or cobalt. The published baseline cycling data tell a more complicated story. An incremental capacity analysis of the VTT test report.">
 <meta property="og:image" content="https://faradaynotes.com/posts/donut-lab/thumbnail.png">
-<meta property="og:image:width" content="4141">
-<meta property="og:image:height" content="2169">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta property="og:locale" content="en_US">
 <meta property="og:site_name" content="Faraday Notes">
 <meta property="article:published_time" content="2026-04-20">
@@ -140,6 +140,14 @@
 .references-list li { margin-top: 0.6rem; }
 .references-list li:first-child { margin-top: 0; }
 
+/* Prevent horizontal overflow */
+html, body { overflow-x: hidden; max-width: 100%; }
+* { min-width: 0; }
+
+/* Force grid children to respect column width */
+.post-layout > * { min-width: 0; overflow-wrap: break-word; }
+.post-body > * { min-width: 0; }
+
 /* ── Mobile ── */
 @media (max-width: 500px) {
   .post-layout {
@@ -149,55 +157,21 @@
       [text-end] 1.2rem
       [page-end screen-end];
   }
-  .post-header {
-    padding: 1.8rem 0 1.5rem;
-  }
-  .post-h1 {
-    font-size: 1.5rem;
-    line-height: 1.2;
-  }
-  .post-abstract {
-    font-size: 0.9rem;
-    line-height: 1.65;
-  }
-  .post-category {
-    font-size: 9px;
-    letter-spacing: 0.08em;
-  }
-  .post-byline {
-    gap: 1rem;
-    font-size: 10px;
-  }
-  .post-body h2 {
-    font-size: 1.15rem;
-  }
-  .post-body p {
-    font-size: 0.95rem;
-  }
-  .callout-grid {
-    grid-template-columns: 1fr;
-  }
-  .fig3-chart-wrap {
-    height: 220px;
-  }
-  .fig-caption {
-    font-size: 0.82rem;
-  }
-  .electrochem-table {
-    padding: 0.8rem;
-  }
-  .data-table {
-    font-size: 0.82rem;
-  }
-  .hero-wrap {
-    padding: 1.5rem 0 0;
-  }
-  nav {
-    padding: 0 1.2rem;
-  }
-  .nav-links {
-    gap: 1.2rem;
-  }
+  .post-header { padding: 1.8rem 0 1.5rem; }
+  .post-h1 { font-size: 1.5rem; line-height: 1.2; }
+  .post-abstract { font-size: 0.9rem; line-height: 1.65; }
+  .post-category { font-size: 9px; letter-spacing: 0.08em; word-break: break-word; overflow-wrap: break-word; }
+  .post-byline { gap: 1rem; font-size: 10px; }
+  .post-body h2 { font-size: 1.15rem; }
+  .post-body p { font-size: 0.95rem; }
+  .callout-grid { grid-template-columns: 1fr; }
+  .fig3-chart-wrap { height: 220px; }
+  .fig-caption { font-size: 0.82rem; }
+  .electrochem-table { padding: 0.8rem; }
+  .data-table { font-size: 0.82rem; }
+  .hero-wrap { padding: 1.5rem 0 0; }
+  nav { padding: 0 1.2rem; }
+  .nav-links { gap: 1.2rem; }
 }
 </style>
 </head>
