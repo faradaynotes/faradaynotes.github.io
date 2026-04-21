@@ -229,7 +229,7 @@
 <div class="post-body">
   <p>Donut Lab’s public claims are not modest. The company points to high energy density, rapid charging, operation across extreme temperatures, improved intrinsic safety, and most strikingly, a solid-state chemistry reportedly free of lithium, nickel, and cobalt. Any one of those claims would deserve careful scrutiny.</p>
 
-  <p>In this post, we analyze the baseline cycling data from Figure 2 of <a href="https://pub-fee113bb711e441db5c353d2d31abbb3.r2.dev/VTT_CR_00092_26.pdf" style="color:inherit;"><em>Donut Lab Solid-State Battery V1 Charge Performance Test</em></a> [<a href="#ref1" style="color:var(--accent);text-decoration:none;">1</a>]: the 1C reference cycles that form the electrochemical foundation of everything that follows. We extracted the raw data from the published figure at better than 99.88% accuracy and analyzed it at three levels: the voltage–capacity profile, the derived energy and coulombic efficiency metrics (capacity loss during formation cycles), and the incremental capacity signature (dQ/dV versus voltage), which serves as a chemical fingerprint of the redox processes active inside the cell.</p>
+  <p>In this post, we analyze the baseline cycling data from Figure 2 of <a href="https://pub-fee113bb711e441db5c353d2d31abbb3.r2.dev/VTT_CR_00092_26.pdf" style="color:inherit;" target="_blank" rel="noopener"><em>Donut Lab Solid-State Battery V1 Charge Performance Test</em></a> [<a href="#ref1" style="color:var(--accent);text-decoration:none;">1</a>]: the 1C reference cycles that form the electrochemical foundation of everything that follows. We extracted the raw data from the published figure and analyzed it at three levels: the voltage–capacity profile, the derived energy and coulombic efficiency metrics (capacity loss during formation cycles), and the incremental capacity signature (dQ/dV versus voltage), which serves as a chemical fingerprint of the redox processes active inside the cell.</p>
 
   <div class="aside">This article focuses only on <strong>Figure 2</strong> of the VTT report: the initial capacity test and reference-style 1C cycling. The fast-charge sections (Figures 3 and 4) deserve their own treatment because they provide a different set of information.</div>
 
@@ -251,12 +251,12 @@
 
   <p>The operating voltage window is high, pointing to a cathode in the high-voltage intercalation family (NMC, NCA, LMO, LNMO, and related systems) rather than a low-voltage insertion or conversion chemistry. The voltage profile shows no single dominant plateau, ruling out typical phosphate-like behavior. The charge–discharge voltage gap of ~0.35–0.37 V is modest for a solid-state cell at 1C, suggesting reasonably fast interfacial kinetics (see <a href="#table2" style="color:var(--accent);text-decoration:none;">Table 2</a>).</p>
 
-  <p>A 4.15 V upper cutoff and a ~3.48–3.49 V average discharge voltage place this cell firmly in the domain of high-voltage intercalation systems.</p>
+  <p>A 4.15 V upper cutoff and a ~3.48–3.49 V average discharge voltage place this cell firmly in the domain of high-voltage intercalation systems. This voltage window is also consistent with certain sodium-ion layered oxide chemistries — P2-type and O3-type Na<sub>x</sub>MO<sub>2</sub> systems operate across a comparable range.</p>
 
-  <h2>What the VTT report measures — and what its table structure leaves implicit</h2>
+  <h2>What the VTT Report Left Out</h2>
     <p><a href="#figure1" style="color:var(--accent);text-decoration:none;">Figure 1</a> shows the full sequence, beginning with the initial charge and then the first discharge. In the VTT report, Cycle 1 is defined starting from the first discharge. As a result, the charge capacity associated with that initial charge is absent from VTT Table 3 (shown here as <a href="#table1" style="color:var(--accent);text-decoration:none;">Table 1</a>) and the entry appears as “—”. Notably, the report does not comment on this absent charge event or quantify the capacity loss that occurred during it — which corresponds to the ~2.6 Ah difference between the first charge and first discharge visible in <a href="#figure1" style="color:var(--accent);text-decoration:none;">Figure 1</a>.</p>
 
-  <p>This means the most informative number in the entire initial test — the irreversible first-cycle loss — is not visible in the reported table at all.</p>
+  <p><strong>The number that matters most — a ~2.6 Ah formation loss representing ~9% of charge capacity — does not appear anywhere in the VTT table.</strong></p>
 
   <p><a href="#table2" style="color:var(--accent);text-decoration:none;">Table 2</a> presents the same sequence using values calculated from <a href="#figure1" style="color:var(--accent);text-decoration:none;">Figure 1</a>, organized as complete charge–discharge pairs for the first two cycles.</p>
 
@@ -331,7 +331,7 @@
       <div class="fig3-chart-wrap"><canvas id="f3dischargeChart"></canvas></div>
     </div>
   </div>
-  <p class="fig-caption"><strong>Figure 3.</strong> Interactive comparison of the extracted Donut Lab dQ/dV fingerprint against reference chemistries from Dubarry &amp; Anseán (2022). Charge (top) and discharge (bottom) panels shown separately. Toggle chemistries using the controls above. Reference curves scaled to match peak amplitude for visual comparison. DOI: <a href="https://doi.org/10.3389/fenrg.2022.1023555" style="color:var(--ink-faint)">10.3389/fenrg.2022.1023555</a> · Dataset: <a href="https://doi.org/10.17632/4k8f4t352y.1" style="color:var(--ink-faint)">10.17632/4k8f4t352y.1</a>.</p>
+  <p class="fig-caption"><strong>Figure 3.</strong> Interactive comparison of the extracted Donut Lab dQ/dV fingerprint against reference chemistries from Dubarry &amp; Anseán (2022). Charge (top) and discharge (bottom) panels shown separately. Toggle chemistries using the controls above. Reference curves scaled to match peak amplitude for visual comparison. DOI: <a href="https://doi.org/10.3389/fenrg.2022.1023555" style="color:var(--ink-faint)" target="_blank" rel="noopener">10.3389/fenrg.2022.1023555</a> · Dataset: <a href="https://doi.org/10.17632/4k8f4t352y.1" style="color:var(--ink-faint)" target="_blank" rel="noopener">10.17632/4k8f4t352y.1</a>.</p>
 </div>
 
 
@@ -510,11 +510,13 @@ f3buildChecks();
   <div class="post-references" style="grid-column:text; margin-top:3rem; padding-top:1.4rem; border-top:1px solid var(--rule);">
     <h2>References</h2>
     <ol class="references-list">
-      <li id="ref1">Haavisto, J. &amp; Hentunen, A. (2026). <em>Donut Lab Solid-State Battery V1 Charge Performance Test.</em> Customer Report VTT-CR-00092-26. VTT Technical Research Centre of Finland Ltd., dated 9 February 2026. <a href="https://pub-fee113bb711e441db5c353d2d31abbb3.r2.dev/VTT_CR_00092_26.pdf" style="color:var(--ink-faint);">https://pub-fee113bb711e441db5c353d2d31abbb3.r2.dev/VTT_CR_00092_26.pdf</a></li>
-      <li id="ref2">Dubarry, M. &amp; Anseán, D. (2022). Best practices for incremental capacity analysis. <em>Frontiers in Energy Research</em>, 10, 1023555. <a href="https://doi.org/10.3389/fenrg.2022.1023555" style="color:var(--ink-faint);">https://doi.org/10.3389/fenrg.2022.1023555</a></li>
-      <li id="ref3">Dubarry, M. &amp; Anseán, D. (2022). <em>Incremental capacity analysis reference dataset — 11 example files for pristine IC curves.</em> Mendeley Data, V1. <a href="https://doi.org/10.17632/4k8f4t352y.1" style="color:var(--ink-faint);">https://doi.org/10.17632/4k8f4t352y.1</a></li>
+      <li id="ref1">Haavisto, J. &amp; Hentunen, A. (2026). <em>Donut Lab Solid-State Battery V1 Charge Performance Test.</em> Customer Report VTT-CR-00092-26. VTT Technical Research Centre of Finland Ltd., dated 9 February 2026. <a href="https://pub-fee113bb711e441db5c353d2d31abbb3.r2.dev/VTT_CR_00092_26.pdf" style="color:var(--ink-faint);" target="_blank" rel="noopener">https://pub-fee113bb711e441db5c353d2d31abbb3.r2.dev/VTT_CR_00092_26.pdf</a></li>
+      <li id="ref2">Dubarry, M. &amp; Anseán, D. (2022). Best practices for incremental capacity analysis. <em>Frontiers in Energy Research</em>, 10, 1023555. <a href="https://doi.org/10.3389/fenrg.2022.1023555" style="color:var(--ink-faint);" target="_blank" rel="noopener">https://doi.org/10.3389/fenrg.2022.1023555</a></li>
+      <li id="ref3">Dubarry, M. &amp; Anseán, D. (2022). <em>Incremental capacity analysis reference dataset — 11 example files for pristine IC curves.</em> Mendeley Data, V1. <a href="https://doi.org/10.17632/4k8f4t352y.1" style="color:var(--ink-faint);" target="_blank" rel="noopener">https://doi.org/10.17632/4k8f4t352y.1</a></li>
     </ol>
   </div>
+
+  <div class="post-note" style="grid-column:text; margin-top:2rem; padding-top:1.2rem; border-top:1px solid var(--rule); font-size:0.88rem; color:var(--ink-faint); font-style:italic;">This post was written by the author. AI language tools were used to assist with phrasing and editorial clarity. All data extraction, electrochemical analysis, and scientific interpretation are the author's own.</div>
 
   <div class="post-tags">
     <span class="tag">Donut Lab</span>
@@ -530,7 +532,7 @@ f3buildChecks();
 </div><!-- /.post-layout -->
 <footer>
   <span>© 2026 Faraday Notes — Battery science &amp; energy storage</span>
-  <span><a href="https://faradaynotes.com" style="color:inherit;text-decoration:none;">faradaynotes.com</a></span>
+  <span><a href="https://faradaynotes.com" style="color:inherit;text-decoration:none;" target="_blank" rel="noopener">faradaynotes.com</a></span>
 </footer>
 </body>
 </html>
