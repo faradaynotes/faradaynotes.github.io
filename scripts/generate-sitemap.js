@@ -1,10 +1,8 @@
 // Faraday Notes — Sitemap Generator
 // Reads posts/posts.json, writes sitemap.xml
 // Run automatically by GitHub Actions on every push to main
-
 const fs   = require('fs');
 const path = require('path');
-
 const BASE_URL = 'https://faradaynotes.com';
 const today    = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
 
@@ -17,7 +15,7 @@ const rootPages = [
 ];
 
 // Read posts
-const postsPath = path.join(__dirname, 'posts', 'posts.json');
+const postsPath = path.join(__dirname, '..', 'posts', 'posts.json');
 let posts = [];
 try {
   posts = JSON.parse(fs.readFileSync(postsPath, 'utf8'));
@@ -39,7 +37,6 @@ function urlEntry({ url, changefreq, priority, lastmod }) {
 }
 
 const rootEntries = rootPages.map(urlEntry).join('\n');
-
 const postEntries = posts.map(function (post) {
   return urlEntry({
     url:        '/posts/' + post.slug + '/',
@@ -55,9 +52,9 @@ const xml = [
   rootEntries,
   postEntries,
   '</urlset>',
-  '', // trailing newline
+  '',
 ].join('\n');
 
-const outPath = path.join(__dirname, 'sitemap.xml');
+const outPath = path.join(__dirname, '..', 'sitemap.xml');
 fs.writeFileSync(outPath, xml, 'utf8');
 console.log('sitemap.xml written with ' + (rootPages.length + posts.length) + ' URLs.');
