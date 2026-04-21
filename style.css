@@ -1,23 +1,37 @@
-/* Google Fonts loaded via <link> tags in HTML head for better performance */
+/* =============================================================================
+   Faraday Notes — Global Stylesheet
+   Fonts: Inter (body), Lora (display/headings), DM Mono (labels/code/meta)
+   ============================================================================= */
 
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Mono:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ── Design tokens ── */
 :root {
-  --ink: #1a1a18;
-  --ink-light: #4a4a44;
-  --ink-faint: #8a8a82;
-  --paper: #fafaf7;
+  --ink:        #1a1a18;
+  --ink-light:  #4a4a44;
+  --ink-faint:  #8a8a82;
+  --paper:      #fafaf7;
   --paper-warm: #f4f3ee;
-  --accent: #c0392b;
-  --rule: #ddddd5;
-  --highlight: #fff9c4;
-  --mono: 'DM Mono', monospace;
-  --serif: 'Inter', system-ui, sans-serif;
+  --accent:     #c0392b;
+  --rule:       #ddddd5;
+  --highlight:  #fff9c4;
+
+  --mono:    'DM Mono', monospace;
+  --serif:   'Inter', system-ui, sans-serif;
   --display: 'Lora', Georgia, serif;
-  --col: 680px;
+
+  --col:  680px;
   --wide: 980px;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+/* ── Base ── */
 body {
   background: var(--paper);
   color: var(--ink);
@@ -25,8 +39,10 @@ body {
   font-size: 18px;
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
+/* ── Navigation ── */
 nav {
   border-bottom: 1px solid var(--rule);
   padding: 0 2.5rem;
@@ -67,8 +83,10 @@ nav {
   transition: color 0.15s;
 }
 
-.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a:hover,
+.nav-links a.active { color: var(--accent); }
 
+/* ── Footer ── */
 footer {
   border-top: 1px solid var(--rule);
   padding: 1.5rem 2.5rem;
@@ -81,6 +99,8 @@ footer {
   align-items: center;
   margin-top: 4rem;
 }
+
+/* ── Shared UI atoms ── */
 
 .section-label {
   font-family: var(--mono);
@@ -108,6 +128,78 @@ footer {
   text-transform: uppercase;
   color: var(--accent);
   margin-bottom: 0.5rem;
+}
+
+/* ── Homepage post list ── */
+.post-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1.6rem;
+  align-items: start;
+  padding: 1.6rem 0;
+  border-top: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.post-row:last-child { border-bottom: 1px solid var(--rule); }
+.post-row:hover { border-color: var(--accent); }
+.post-row:hover .post-row-title { color: var(--accent); }
+
+.post-row-thumb {
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  overflow: hidden;
+  background: var(--paper-warm);
+}
+
+.post-row-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.post-row-tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.45rem;
+}
+
+.post-row-title {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 0.45rem;
+  color: var(--ink);
+  transition: color 0.15s;
+}
+
+.post-row-excerpt {
+  font-size: 0.85rem;
+  color: var(--ink-light);
+  line-height: 1.6;
+  margin-bottom: 0.6rem;
+}
+
+.post-row-meta {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  display: flex;
+  gap: 1rem;
 }
 
 .post-meta {
@@ -145,35 +237,391 @@ footer {
 
 .back-btn:hover { color: var(--accent); }
 
+/* =============================================================================
+   Post layout — CSS Grid with named column lines
+   Columns: screen (viewport) > page (~960px) > text (~680px)
+   .post-body uses display:contents so its children join the grid directly.
+   ============================================================================= */
+
+.post-layout {
+  display: grid;
+  grid-template-columns:
+    [screen-start] 1fr
+    [page-start]   minmax(0, 140px)
+    [text-start]   minmax(0, 680px)
+    [text-end]     minmax(0, 140px)
+    [page-end]     1fr
+    [screen-end];
+  row-gap: 0;
+}
+
+.post-layout > * { grid-column: text; }
+
+/* ── Post header ── */
+.post-header {
+  grid-column: text;
+  padding: 4rem 0 2.5rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+.post-category {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.9rem;
+}
+
+.post-h1 {
+  font-family: var(--display);
+  font-size: 2.4rem;
+  font-weight: 600;
+  line-height: 1.18;
+  margin-bottom: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.post-abstract {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink-light);
+  line-height: 1.72;
+  margin-bottom: 1.6rem;
+}
+
+.post-byline {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: 0.04em;
+  border-top: 1px solid var(--rule);
+  padding-top: 1rem;
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.small-note {
+  font-size: 0.9rem;
+  color: var(--ink-faint);
+}
+
+/* ── Hero image ── */
+.hero-wrap {
+  grid-column: page;
+  padding: 2.5rem 0 0;
+}
+
+.hero-card {
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.hero-card img { width: 100%; display: block; }
+
+/* ── Post body ── */
+.post-body { display: contents; }
+
+.post-body h2 {
+  grid-column: text;
+  font-family: var(--display);
+  font-size: 1.42rem;
+  font-weight: 600;
+  margin: 3.2rem 0 0.9rem;
+  border-left: 3px solid var(--accent);
+  padding-left: 0.85rem;
+}
+
+.post-body h3 {
+  grid-column: text;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin: 2rem 0 0.7rem;
+}
+
+.post-body p {
+  grid-column: text;
+  margin-bottom: 0;
+  margin-top: 1.1em;
+}
+
+.post-body p:first-child { margin-top: 1.8rem; }
+
+.lede-list {
+  grid-column: text;
+  margin: 0.5rem 0 1rem 1.2rem;
+}
+
+.lede-list li { margin-bottom: 0.5rem; }
+
+/* ── Aside ── */
+.aside {
+  grid-column: text;
+  background: var(--highlight);
+  border-left: 3px solid #e8b84b;
+  padding: 0.9rem 1.1rem;
+  margin: 1.6rem 0;
+  font-size: 0.93rem;
+  color: var(--ink-light);
+  font-style: italic;
+  border-radius: 0 3px 3px 0;
+}
+
+/* ── Figure system ── */
+.fig-inline {
+  grid-column: text;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 3rem 0 0;
+}
+
+.fig-inline + p { margin-top: 1.8rem; }
+
+.fig-inline img {
+  width: 100%;
+  display: block;
+}
+
+.fig-caption {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 1.6;
+  padding: 0.85rem 1rem 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+
+.fig-inline.fig-page { grid-column: page; }
+
+/* ── Data tables ── */
+.electrochem-table {
+  grid-column: text;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 2rem 0 0;
+  padding: 1.1rem;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.data-table th {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  border-bottom: 2px solid var(--rule);
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+.data-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-light);
+  vertical-align: top;
+}
+
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tr:hover td { background: rgba(0,0,0,0.018); }
+
+.table-note {
+  margin-top: 0.85rem;
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* ── Callout grid ── */
+.callout-grid {
+  grid-column: text;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.8rem 0 0;
+}
+
+.callout {
+  border: 1px solid var(--rule);
+  background: var(--paper-warm);
+  padding: 1.1rem;
+  border-radius: 5px;
+}
+
+.callout .label {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+
+.callout p {
+  grid-column: unset;
+  margin-top: 0.3rem;
+  font-size: 0.95rem;
+}
+
+/* ── Equation / key-fact box ── */
+.equation {
+  grid-column: text;
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  padding: 1.1rem 1.3rem;
+  margin: 2rem 0 0;
+  text-align: center;
+  border-radius: 5px;
+  line-height: 1.65;
+  color: var(--ink-light);
+}
+
+/* ── Two-up image pair ── */
+.two-up {
+  grid-column: text;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+/* ── Post tags ── */
+.post-tags {
+  grid-column: text;
+  margin-top: 3rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* ── Figure 3: interactive dQ/dV chart widget ── */
+.fig3-wrap {
+  grid-column: page;
+  background: var(--paper-warm);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 3rem 0 0;
+}
+
+.fig3-toolbar {
+  padding: 1rem 1.2rem 0.9rem;
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+
+.fig3-btns {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.fig3-btn {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  background: var(--paper);
+  color: var(--ink-light);
+  cursor: pointer;
+  transition: all 0.12s;
+}
+
+.fig3-btn:hover               { background: var(--paper-warm); color: var(--ink); }
+.fig3-btn-primary             { border-color: var(--accent); color: var(--accent); }
+.fig3-btn-primary:hover       { background: var(--accent); color: #fff; }
+
+.fig3-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.1rem;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--ink-light);
+}
+
+.fig3-chk {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  user-select: none;
+  letter-spacing: 0.03em;
+}
+
+.fig3-chk input       { cursor: pointer; accent-color: var(--accent); }
+
+.fig3-swatch {
+  width: 20px;
+  height: 0;
+  display: inline-block;
+  border-top: 3px solid #000;
+  flex-shrink: 0;
+}
+
+.fig3-panels          { padding: 1rem 1.2rem 0.5rem; }
+.fig3-panel           { margin-bottom: 1.2rem; }
+
+.fig3-panel-title {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.5rem;
+}
+
+.fig3-chart-wrap {
+  position: relative;
+  height: 340px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1060px) {
+  .post-layout {
+    grid-template-columns:
+      [screen-start page-start] 2rem
+      [text-start] 1fr
+      [text-end] 2rem
+      [page-end screen-end];
+  }
+}
+
 @media (max-width: 800px) {
-  nav { padding: 0 1.2rem; }
+  nav    { padding: 0 1.2rem; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  .post-row { grid-template-columns: 100px 1fr; gap: 1rem; }
 }
 
-/* ── Keyboard accessibility: focus-visible ── */
-:focus { outline: none; }
-
-:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 2px;
+@media (max-width: 500px) {
+  .post-row { grid-template-columns: 1fr; }
+  .post-row-thumb { display: none; }
 }
 
-.nav-links a:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 4px;
-  border-radius: 2px;
-}
-
-.form-row input:focus-visible,
-.form-row textarea:focus-visible {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(192,57,43,0.12);
-}
-
-.submit-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  box-shadow: 0 0 0 4px rgba(192,57,43,0.15);
+@media (max-width: 600px) {
+  .post-h1     { font-size: 1.85rem; }
+  .post-header { padding-top: 2.5rem; }
+  .two-up,
+  .callout-grid { grid-template-columns: 1fr; }
 }
