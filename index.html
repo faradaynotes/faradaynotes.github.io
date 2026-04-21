@@ -72,7 +72,7 @@
     border-radius: 20px;
   }
 
-  /* ── Post list ── */
+  /* ── Post feed ── */
   .posts-section {
     max-width: var(--wide);
     margin: 0 auto;
@@ -81,74 +81,71 @@
   .post-list {
     display: flex;
     flex-direction: column;
-    gap: 0;
   }
-  .post-row {
+
+  .post-card {
     display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 2rem;
-    align-items: start;
-    padding: 1.8rem 0;
+    grid-template-columns: 45% 1fr;
+    gap: 2.8rem;
+    align-items: center;
+    padding: 2.8rem 0;
     border-top: 1px solid var(--rule);
     text-decoration: none;
     color: inherit;
     transition: border-color 0.15s;
   }
-  .post-row:last-child { border-bottom: 1px solid var(--rule); }
-  .post-row:hover { border-color: var(--accent); }
-  .post-row:hover .post-row-title { color: var(--accent); }
-  .post-row-thumb {
+  .post-card:last-child { border-bottom: 1px solid var(--rule); }
+  .post-card:hover { border-color: var(--accent); }
+  .post-card:hover .post-card-title { color: var(--accent); }
+
+  .post-card-thumb {
     aspect-ratio: 16 / 9;
     border: 1px solid var(--rule);
-    border-radius: 3px;
+    border-radius: 5px;
     overflow: hidden;
     background: var(--paper-warm);
   }
-  .post-row-thumb img {
+  .post-card-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
   }
-  .post-row-tag {
+  .post-card:hover .post-card-thumb img { transform: scale(1.02); }
+
+  .post-card-tag {
     font-family: var(--mono);
     font-size: 10px;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--accent);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
   }
-  .post-row-title {
+  .post-card-title {
     font-family: var(--display);
-    font-size: 1.2rem;
+    font-size: 1.75rem;
     font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
+    line-height: 1.22;
+    margin-bottom: 0.85rem;
     color: var(--ink);
     transition: color 0.15s;
   }
-  .post-row-excerpt {
-    font-size: 0.9rem;
+  .post-card-excerpt {
+    font-size: 0.95rem;
     color: var(--ink-light);
-    line-height: 1.65;
-    margin-bottom: 0.65rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
   }
-  .post-row-meta {
+  .post-card-meta {
     font-family: var(--mono);
     font-size: 10px;
     color: var(--ink-faint);
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     display: flex;
-    gap: 1rem;
+    gap: 1.2rem;
   }
-  @media (max-width: 800px) {
-    .masthead-title { font-size: 2rem; }
-    .post-row { grid-template-columns: 140px 1fr; gap: 1.2rem; }
-  }
-  @media (max-width: 500px) {
-    .post-row { grid-template-columns: 1fr; }
-    .post-row-thumb { display: none; }
-  }
+
   .load-more-btn {
     font-family: var(--mono);
     font-size: 11px;
@@ -163,6 +160,16 @@
     transition: border-color 0.15s, color 0.15s;
   }
   .load-more-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  @media (max-width: 800px) {
+    .masthead-title { font-size: 2rem; }
+    .post-card { grid-template-columns: 1fr; gap: 1.4rem; padding: 2rem 0; }
+    .post-card-title { font-size: 1.4rem; }
+  }
+  @media (max-width: 500px) {
+    .posts-section { padding: 1.5rem 1.2rem 3rem; }
+    .masthead { padding: 2.5rem 1.2rem 2rem; }
+  }
 </style>
 <script>
 (function () {
@@ -175,27 +182,22 @@
     return d.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
   }
 
-  function postThumb(slug) {
-    return 'posts/' + slug + '/thumbnail.png';
-  }
+  function postThumb(slug) { return 'posts/' + slug + '/thumbnail.png'; }
+  function postHref(slug)  { return 'posts/' + slug + '/'; }
 
-  function postHref(slug) {
-    return 'posts/' + slug + '/';
-  }
-
-  function makeRow(post) {
+  function makeCard(post) {
     const a = document.createElement('a');
-    a.className = 'post-row';
+    a.className = 'post-card';
     a.href = postHref(post.slug);
     a.innerHTML =
-      '<div class="post-row-thumb">' +
+      '<div class="post-card-thumb">' +
         '<img src="' + postThumb(post.slug) + '" alt="' + post.title.replace(/"/g, '&quot;') + '" loading="lazy">' +
       '</div>' +
-      '<div>' +
-        '<div class="post-row-tag">' + post.tags + '</div>' +
-        '<div class="post-row-title">' + post.title + '</div>' +
-        '<div class="post-row-excerpt">' + post.excerpt + '</div>' +
-        '<div class="post-row-meta">' +
+      '<div class="post-card-body">' +
+        '<div class="post-card-tag">' + post.tags + '</div>' +
+        '<div class="post-card-title">' + post.title + '</div>' +
+        '<div class="post-card-excerpt">' + post.excerpt + '</div>' +
+        '<div class="post-card-meta">' +
           '<span>' + formatDate(post.date) + '</span>' +
         '</div>' +
       '</div>';
@@ -205,7 +207,7 @@
   function renderPage() {
     const list = document.getElementById('post-list');
     const next = allPosts.slice(rendered, rendered + PAGE_SIZE);
-    next.forEach(function (post) { list.appendChild(makeRow(post)); });
+    next.forEach(function (post) { list.appendChild(makeCard(post)); });
     rendered += next.length;
     const wrap = document.getElementById('load-more-wrap');
     wrap.style.display = rendered < allPosts.length ? 'block' : 'none';
@@ -218,14 +220,10 @@
       allPosts = posts;
       renderPage();
     })
-    .catch(function () {
-      /* Silently fail on local file:// preview — use Live Server instead */
-    });
+    .catch(function () {});
 
   document.addEventListener('click', function (e) {
-    if (e.target && e.target.id === 'load-more-btn') {
-      renderPage();
-    }
+    if (e.target && e.target.id === 'load-more-btn') renderPage();
   });
 })();
 </script>
